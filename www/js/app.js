@@ -1,10 +1,15 @@
-// Ionic Starter App
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBTWaA-uzjdq9iG7T7-OXmMb9N7nYPpob4",
+    authDomain: "iskapp-4b885.firebaseapp.com",
+    databaseURL: "https://iskapp-4b885.firebaseio.com",
+    projectId: "iskapp-4b885",
+    storageBucket: "iskapp-4b885.appspot.com",
+    messagingSenderId: "416997569621"
+  };
+  firebase.initializeApp(config);
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+var app = angular.module('starter', ['ionic', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,49 +30,41 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    templateUrl: 'templates/menu.html'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
+    .state('login', {
+      url: '/login',
+          templateUrl: 'templates/login.html',
+          controller: 'AuthCtrl as auth'
+    })
+    .state('app.profile', {
+      url: '/profile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/profile.html'
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+  .state('app.home', {
+      url: '/home',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/home.html'
         }
       }
     })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.settings', {
+    url: '/settings',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/settings.html'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/login');
 });
