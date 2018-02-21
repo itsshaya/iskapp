@@ -1,5 +1,12 @@
   // Initialize Firebase
-  var config = {
+  // Ionic Starter App
+
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+// 'starter.controllers' is found in controllers.js
+
+ var config = {
     apiKey: "AIzaSyBTWaA-uzjdq9iG7T7-OXmMb9N7nYPpob4",
     authDomain: "iskapp-4b885.firebaseapp.com",
     databaseURL: "https://iskapp-4b885.firebaseio.com",
